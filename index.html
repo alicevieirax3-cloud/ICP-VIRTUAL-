@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Instituto Casa do Pai</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Instituto Casa do Pai">
+        <span class="brand-mark">CP</span>
+        <span>
+          <strong>Instituto Casa do Pai</strong>
+          <small>Agenda e cadastros online</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#cadastros">Cadastros</a>
+        <a href="#castracao">Castração</a>
+        <a href="#agenda">Agenda do Instituto</a>
+        <a href="#cursos">Cursos</a>
+      </nav>
+      <a class="nav-action" href="#cadastros">Cadastrar</a>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-copy">
+          <p class="eyebrow">Painel online</p>
+          <h1>Instituto Casa do Pai</h1>
+          <p class="welcome">Seja bem-vindo à Casa do Pai</p>
+          <a class="button primary pulse-link" href="#cadastros">Faça seu cadastro aqui</a>
+        </div>
+
+        <div class="hero-panel" aria-label="Resumo da agenda">
+          <div class="panel-top">
+            <span class="status-dot"></span>
+            <strong>Atendimento ativo</strong>
+          </div>
+          <div class="hero-metrics">
+            <article>
+              <span>Castrações</span>
+              <strong id="hero-castrations">0</strong>
+            </article>
+            <article>
+              <span>Cursos</span>
+              <strong id="hero-courses">0</strong>
+            </article>
+          </div>
+          <div class="next-list">
+            <p class="eyebrow">Próximas datas</p>
+            <div id="hero-events"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section band" id="cadastros">
+        <div class="section-heading">
+          <p class="eyebrow">Cadastros</p>
+          <h2>Escolha o tipo de cadastro</h2>
+          <p>Use os botões abaixo para ir direto ao agendamento de castração ou à inscrição em cursos.</p>
+        </div>
+
+        <div class="choice-grid">
+          <a class="choice-card blue" href="#castracao">
+            <span>01</span>
+            <strong>Agendar castração</strong>
+            <p>Cadastre nome, telefone, endereço e nome do animal para reservar uma data.</p>
+          </a>
+          <a class="choice-card green" href="#cursos">
+            <span>02</span>
+            <strong>Cadastro para cursos</strong>
+            <p>Registre participantes interessados nas atividades e cursos do Instituto.</p>
+          </a>
+          <a class="choice-card yellow" href="#agenda">
+            <span>03</span>
+            <strong>Ver agenda</strong>
+            <p>Consulte datas de castração e atividades do Instituto Casa do Pai.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" id="castracao">
+        <div class="section-heading">
+          <p class="eyebrow">Agendamento online</p>
+          <h2>Cadastro para castração</h2>
+          <p>Ao confirmar, a pessoa entra na agenda e o horário escolhido fica reservado.</p>
+        </div>
+
+        <div class="booking-layout">
+          <form class="form-shell booking-form" id="castration-form">
+            <label>
+              Nome completo
+              <input name="name" type="text" placeholder="Nome da pessoa responsável" required>
+            </label>
+            <label>
+              Telefone
+              <input name="phone" type="tel" placeholder="(00) 00000-0000" required>
+            </label>
+            <label class="full">
+              Endereço
+              <input name="address" type="text" placeholder="Rua, número, bairro e cidade" required>
+            </label>
+            <label>
+              Nome do animal
+              <input name="animal" type="text" placeholder="Nome do animal" required>
+            </label>
+            <label>
+              Data da castração
+              <select name="date" required id="castration-date"></select>
+            </label>
+            <label>
+              Horário
+              <select name="time" required id="castration-time"></select>
+            </label>
+            <label>
+              Tipo de animal
+              <select name="animalType" required>
+                <option value="Cão">Cão</option>
+                <option value="Gato">Gato</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </label>
+            <button class="button primary full" type="submit">Confirmar agendamento</button>
+          </form>
+
+          <aside class="availability-panel">
+            <div>
+              <p class="eyebrow">Horários</p>
+              <h3 id="availability-title">Datas de castração</h3>
+            </div>
+            <div class="slot-list" id="slot-list"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section agenda-section" id="agenda">
+        <div class="section-heading">
+          <p class="eyebrow">Agenda</p>
+          <h2>Datas do Instituto Casa do Pai</h2>
+          <p>Agenda com datas de castração e atividades abertas do Instituto.</p>
+        </div>
+
+        <div class="agenda-board">
+          <div class="agenda-column">
+            <h3>Agenda de castração</h3>
+            <div class="event-list" id="castration-agenda"></div>
+          </div>
+          <div class="agenda-column">
+            <h3>Atividades do Instituto</h3>
+            <div class="event-list" id="activity-agenda"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="cursos">
+        <div class="section-heading">
+          <p class="eyebrow">Cursos</p>
+          <h2>Cadastro para cursos</h2>
+          <p>Cadastre participantes para cursos, oficinas e atividades formativas.</p>
+        </div>
+
+        <div class="course-layout">
+          <form class="form-shell course-form" id="course-form">
+            <label>
+              Nome completo
+              <input name="name" type="text" placeholder="Nome do participante" required>
+            </label>
+            <label>
+              Telefone
+              <input name="phone" type="tel" placeholder="(00) 00000-0000" required>
+            </label>
+            <label class="full">
+              Endereço
+              <input name="address" type="text" placeholder="Rua, número, bairro e cidade" required>
+            </label>
+            <label class="full">
+              Curso desejado
+              <select name="course" required>
+                <option value="Cuidador de animais">Cuidador de animais</option>
+                <option value="Convivência comunitária">Convivência comunitária</option>
+                <option value="Artes e atividades sociais">Artes e atividades sociais</option>
+              </select>
+            </label>
+            <button class="button green-button full" type="submit">Salvar cadastro do curso</button>
+          </form>
+
+          <aside class="registrations">
+            <p class="eyebrow">Inscritos</p>
+            <h3>Cadastros recebidos</h3>
+            <div id="course-registrations"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section band" id="painel">
+        <div class="section-heading">
+          <p class="eyebrow">Painel</p>
+          <h2>Resumo dos cadastros</h2>
+        </div>
+
+        <div class="dashboard">
+          <article class="metric">
+            <span>Agendamentos de castração</span>
+            <strong id="metric-castrations">0</strong>
+          </article>
+          <article class="metric">
+            <span>Cadastros em cursos</span>
+            <strong id="metric-courses">0</strong>
+          </article>
+          <article class="metric">
+            <span>Atividades cadastradas</span>
+            <strong id="metric-events">0</strong>
+          </article>
+        </div>
+
+        <div class="appointments" id="appointments"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Instituto Casa do Pai</span>
+      <a href="#cadastros">Faça seu cadastro aqui</a>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
